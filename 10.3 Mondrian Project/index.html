@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mondrian Project</title>
+  <style>
+    /* 
+    Write your CSS here 
+    Gap Colour: #000
+    White: #F0F1EC
+    Red: #E72F24
+    Black: #232629
+    Blue: #004592
+    Yellow: #F9D01E
+
+    For dimensions, see dimensions.png image.
+    HINT: Remember you can't change the properties of grid lines.
+    But grid lines are transparent!
+    */
+
+    .container{
+      width: 748px;
+      height: 748px;
+
+      display: grid;
+      grid-template-columns: 320px auto;
+      grid-template-rows: 414px auto;
+      gap: 9px;
+
+      background-color: #000;
+    }
+
+    .one {
+      background-color: #E72F24;
+    }
+
+    .two {
+      background-color: #F0F1EC;
+    }
+    
+    .three {
+      display: grid;
+      grid-template-rows: 1fr 20px;
+      gap: 9px;
+    }
+
+    .three > div {
+      background-color: #F0F1EC;
+    }
+
+    .four {
+      display: grid;
+      grid-template-columns: 351px 1fr;
+      gap: 9px;
+    }
+
+    .four .fourone {
+      display: grid;
+      grid-template-rows: 1fr 20px;
+      gap: 9px;
+    }
+
+    .fouroneone {
+      background-color: #F0F1EC;
+    }
+
+
+    .fouronetwo {
+      display: grid;
+      grid-template-columns: 198px auto;
+      gap: 9px;
+    }
+
+    .yellow {
+      background-color: #F9D01E;
+    }
+
+    .gray {
+      background-color: #232629;
+    }
+
+    .four .fourtwo {
+      display: grid;
+      grid-template-rows: 130px auto;
+      gap: 19px;
+    }
+
+    .white {
+      background-color: #F0F1EC;
+    }
+
+    .blue {
+      background-color: #004592;
+    }
+
+
+
+  </style>
+</head>
+
+<body>
+  <!-- Write your HTML here -->
+
+  <div class="container">
+    <div class="item one"></div>
+    <div class="item two"></div>
+    <div class="item three">
+      <div></div>
+      <div></div>
+    </div>
+    <div class="item four">
+      
+      <div class="fourone">
+        <div class="fouroneone"></div>
+        <div class="fouronetwo">
+          <div class="yellow"></div>
+          <div class="gray"></div>
+        </div>
+      </div>
+
+      <div class="fourtwo">
+        <div class="white"></div>
+        <div class="blue"></div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
