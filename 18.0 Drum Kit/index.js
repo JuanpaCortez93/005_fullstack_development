@@ -58,12 +58,30 @@ const buttons = document.querySelectorAll("button");
 
 buttons.forEach(button => button.addEventListener('click', () => {
     const drumType = button.getAttribute('class')[0];
+    button.classList.add('pressed');
+
     playSound(drumType);    
+    setTimeout(()=>{
+        button.classList.remove('pressed');
+    },1000);
+
 })
 );
 
 document.addEventListener('keydown', (e) => {
     let keyDrumType = e.key;
     playSound(keyDrumType); 
+
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach(button => {
+        const drumType = button.getAttribute('class')[0];
+        if(drumType == e.key){
+            button.classList.add('pressed');
+            setTimeout(()=>{
+                button.classList.remove('pressed');
+            },1000);
+        }
+    });
+
 });
 
