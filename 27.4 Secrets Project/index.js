@@ -20,8 +20,8 @@ app.get("/", (req, res) => {
 });
 
 app.post("/check", (req, res) => {
-    console.log(req.body["password"])
-    if(req.body["password"] === "ILoveProgramming"){
+    const {password} = req.body;
+    if(password === "ILoveProgramming"){
         res.sendFile(__dirname + "/public/secret.html")
     }else{
         res.send("The secret is incorrect!");
