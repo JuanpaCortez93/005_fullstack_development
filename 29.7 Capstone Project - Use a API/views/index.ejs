@@ -1,0 +1,32 @@
+<%- include('partials/header.ejs') %>
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col">
+            <form method="post" action="/" class="form">
+                <div class="form-group mb-3">
+                    <label class="form-label" for="library">Insert your NPM library</label>
+                    <input type="text" class="form-control" id="library" name="library" placeholder="Write here your NPM Library">
+                </div>
+                <button type="submit" class="btn btn-primary">Find this library</button>
+            </form>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <% if(locals.content) { %>
+            <% if(content.length > 0) { %>
+                <div class="col">
+                    <ul class="list-group">
+                        <% content.forEach(keyword => { %>
+                            <li class="list-group-item"><%= keyword %></li>
+                        <% }); %>
+                    </ul>
+                </div>
+            <% }else{ %>
+                <p class="text-start">This library does not exist</p>
+            <% } %>
+        <% } %>
+    </div>
+</div>
+
+<%- include('partials/footer.ejs') %>  
