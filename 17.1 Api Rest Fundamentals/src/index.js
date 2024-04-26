@@ -1,11 +1,21 @@
+//Axios
+const api = axios.create({
+    baseURL: 'https://api.themoviedb.org/3/',
+    headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+    },  
+    params: {
+        'api_key': API_KEY
+    }
+});
+
+//Get Trending Movies Preview
 async function getTrendingMoviesPreview(){
-    const response = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`);
-    const data = await response.json();
+    const {data} = await api(`trending/movie/day`);
     const movies = data.results;
     
     movies.forEach(movie => {
-
-        const trendingPreviewMoviesContainer = document.querySelector('#trendingPreview .trendingPreview-movieList');
+        const trendingMoviesPreviewList = document.querySelector('#trendingPreview .trendingPreview-movieList');
 
         const movieContainer = document.createElement('div');
         movieContainer.classList.add('movie-container');
@@ -16,11 +26,30 @@ async function getTrendingMoviesPreview(){
         movieImg.setAttribute('src', `https://image.tmdb.org/t/p/w300${movie.poster_path}`)
 
         movieContainer.appendChild(movieImg);
-        trendingPreviewMoviesContainer.appendChild(movieContainer);
-
+        trendingMoviesPreviewList.appendChild(movieContainer);
     });
 }
 
+//Get Categories
+async function getCategories() {
+    const {data} = await api(`genre/movie/list`);
+    const categories = data.genres;
+    
+    categories.forEach(category => {
+        const categoriesPreviewList = document.querySelector('#categoriesPreview .categoriesPreview-list');
 
+        const genreContainer = document.createElement('div');
+        genreContainer.classList.add('category-container');
 
-getTrendingMoviesPreview();
+        const categoryTitle = document.createElement('h3');
+        categoryTitle.classList.add('category-title');
+        categoryTitle.setAttribute('id', `id${category.id}` );
+
+        const categoryTitleText = document.createTextNode(category.name);
+
+        categoryTitle.appendChild(categoryTitleText);
+        genreContainer.appendChild(categoryTitle);
+        categoriesPreviewList.appendChild(genreContainer);
+    });
+    
+}
