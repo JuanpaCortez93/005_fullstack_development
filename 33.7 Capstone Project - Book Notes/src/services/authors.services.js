@@ -27,7 +27,6 @@ export const GetDeleteAuthors = async (req, res) => {
 
 export const DeleteAuthors = async (req, res) => {
     const {id} = req.params;
-    console.log(id);
     const result = await appDatabaseContext.query("DELETE FROM authors WHERE id = $1", [id]);
     res.redirect('/authors/viewAuthors');
 };
