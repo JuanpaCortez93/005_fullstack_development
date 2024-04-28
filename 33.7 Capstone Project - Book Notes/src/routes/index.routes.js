@@ -4,6 +4,6 @@ import { GetPong, GetIndex } from "../services/index.services.js";
 const router = Router();
 
 router.get('/ping', GetPong);
-router.get('/', GetIndex)
+router.get('/', GetIndex);
 
 export default router;

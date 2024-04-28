@@ -1,0 +1,38 @@
+<%- include('partials/header.ejs') %>
+
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col">
+                <h3 class="mb-4">Escribe la siguiente información</h3>
+                <form action="addBook" method="post">
+                    <div class="form-group mb-3">
+                        <label for="title" class="form-label">Título</label>
+                        <input type="text" name="title" id="title" class="form-control" placeholder="Escribe el título de tu libro" autocomplete="off">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="author" class="form-label">Autor</label>
+                        <select class="form-select" aria-label="Default select example" id="author" name="author">
+                            <option selected>Selecciona una opción...</option>
+                            <% content.forEach(author => { %>
+                                <option value="<%= author.id %>"><%= author.name %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="description" class="form-label">Descripción</label>
+                        <textarea name="description" id="description" class="form-control"  placeholder="Escribe la descripción de tu libro" rows="5"></textarea>
+                        </textarea>
+                    </div>
+                    
+                    <div class="form-group mt-3">
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Registrar libro</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+<%- include('partials/footer.ejs') %>

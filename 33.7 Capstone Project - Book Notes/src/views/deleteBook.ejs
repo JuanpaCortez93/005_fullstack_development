@@ -1,0 +1,43 @@
+<%- include('partials/header.ejs') %>
+
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col">
+                <h3 class="mb-4">¿Estás seguro de eliminar esta información?</h3>
+                <% content.forEach(book => { %>
+
+                    <form action="" method="post">
+
+                        <input type="hidden" value="<% book.id %>"></input>
+
+                        <div class="form-group mb-3">
+                            <label for="title" class="form-label">Título</label>
+                            <input type="text" name="title" id="title" class="form-control" placeholder="Escribe el título de tu libro" autocomplete="off" readonly value="<%= book.title %>">
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="author" class="form-label">Autor</label>
+                            <select class="form-select" aria-label="Default select example" id="author" name="author" readonly>
+                                <% content.forEach(author => { %>
+                                    <option><%= book.name %></option>
+                                <% }) %>
+                            </select>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="description" class="form-label">Descripción</label>
+                            <textarea name="description" id="description" class="form-control" placeholder="Escribe la descripción de tu libro" rows="5" readonly><%= book.description %></textarea>
+                            </textarea>
+                        </div>
+                        
+                        <div class="form-group mt-3">
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Eliminar libro</button>
+                        </div>
+                    </form>
+                    
+                <% }) %>
+            </div>
+        </div>
+    </div>
+
+<%- include('partials/footer.ejs') %>

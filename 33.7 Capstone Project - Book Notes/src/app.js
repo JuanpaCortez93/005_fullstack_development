@@ -1,5 +1,7 @@
 import express from "express";
 import indexRouter from "./routes/index.routes.js"
+import booksRouter from "./routes/books.routes.js"
+import authorsRouter from "./routes/authors.routes.js"
 
 const app = express();
 
@@ -11,7 +13,8 @@ app.use(express.json());
 app.use(express.static('./src/public'));
 
 app.use(indexRouter);
-
+app.use('/books', booksRouter);
+app.use('/authors', authorsRouter);
 
 
 export default app;

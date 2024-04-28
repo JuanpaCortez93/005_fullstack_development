@@ -1,0 +1,31 @@
+<%- include('partials/header.ejs') %>
+
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col">
+                <table class="table table-bordered table-striped table-hover text-center">
+
+                    <thead>
+                        <tr>
+                            <th>Autor</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <% content.forEach(author => {%>
+                        <tr>
+                            <td><%= author.name %></td>
+                            <td>
+                                <a href="/authors/deleteAuthors/<%= author.id %>" class="btn btn-danger"><i class="bi bi-eraser-fill"></i></a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+<%- include('partials/footer.ejs') %>
